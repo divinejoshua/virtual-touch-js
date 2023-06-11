@@ -4,11 +4,7 @@
 
     let video = null
     let predictions = [];
-
-    // Create a new image element
-    var cursorImg = new Image();
-    cursorImg.src = 'images/cursor.png';
-
+    let videoOpacity = 200; 
 
     // On set up 
     function setup() {
@@ -24,6 +20,9 @@
         handpose.on("predict", gotPredictions);
                     
         video.hide()
+
+        // Load the cursor image 
+        cursorImg = loadImage('images/cursor.png');
     }
 
 
@@ -43,7 +42,9 @@ function modelLoaded() {
     // On camera 
     function draw() {
         background(220);
-        image(video,0,0,600,500)
+        translate(width, 0);
+        scale(-1, 1);
+        // image(video,0,0,600,500)
       
         cursorAnimation() //Cursor animation
         
@@ -66,13 +67,10 @@ function modelLoaded() {
 
             // Display the index finger position
 
-            // push()
-            cursorImg.style.position = 'absolute';
-            cursorImg.style.left = indexFingerX + 'px';
-            cursorImg.style.top = indexFingerY + 'px';
-            cursorImg.style.width = 50 + 'px';
-            cursorImg.style.height = 50 + 'px';
-            // pop()
+            push()
+            image(cursorImg, indexFingerX, indexFingerY, 20, 20);
+           
+            pop()
 
 
             
