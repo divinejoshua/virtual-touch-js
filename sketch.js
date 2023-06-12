@@ -42,7 +42,7 @@ function modelLoaded() {
     // On camera 
     function draw() {
         background(220);
-        translate(width, 0);
+        translate(width,  0);
         scale(-1, 1);
         // image(video,0,0,600,500)
       
